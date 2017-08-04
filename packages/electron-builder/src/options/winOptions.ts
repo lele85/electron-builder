@@ -334,6 +334,11 @@ export interface SquirrelWindowsOptions extends WinBuildOptions {
    * @private
    */
   readonly name?: string
+
+  /**
+   * Desired executable filename
+   */
+  readonly executableFilename?: string | null
 }
 
 /**
