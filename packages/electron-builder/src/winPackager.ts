@@ -321,22 +321,22 @@ export class WinPackager extends PlatformPackager<WinBuildOptions> {
     }
   }
 
-  private getExecutableFilename(): String {
+  private getAppExecutableFilename(): String {
       const fileName = this.config
           && this.config.win
           && this.config.win.executableFilename ?
-              `${this.config.win.executableFilename}.exe` :
-              `${this.appInfo.productFilename}.exe`
+              `${this.config.win.executableFilename}` :
+              `${this.appInfo.productFilename}`
       return fileName;
   }
 
   protected async postInitApp(packContext: AfterPackContext) {
-    const executable = path.join(packContext.appOutDir, `${this.getExecutableFilename()}.exe`)
+    const executable = path.join(packContext.appOutDir, `${this.getAppExecutableFilename()}.exe`)
     await rename(path.join(packContext.appOutDir, `${this.electronDistExecutableName}.exe`), executable)
   }
 
   protected signApp(packContext: AfterPackContext): Promise<any> {
-    const exeFileName = `${this.getExecutableFilename()}.exe`
+    const exeFileName = `${this.getAppExecutableFilename()}.exe`
     return this.signAndEditResources(path.join(packContext.appOutDir, exeFileName), packContext.arch, packContext.outDir, path.basename(exeFileName, ".exe"))
   }
 }
