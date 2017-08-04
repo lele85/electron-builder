@@ -83,6 +83,11 @@ export interface WinBuildOptions extends PlatformSpecificBuildOptions {
    * @default true
    */
   readonly verifyUpdateCodeSignature?: boolean
+
+  /**
+   * Desired executable filename
+   */
+  readonly executableFilename?: string | null
 }
 
 export interface CommonNsisOptions {
@@ -335,10 +340,6 @@ export interface SquirrelWindowsOptions extends WinBuildOptions {
    */
   readonly name?: string
 
-  /**
-   * Desired executable filename
-   */
-  readonly executableFilename?: string | null
 }
 
 /**

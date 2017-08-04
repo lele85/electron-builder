@@ -323,9 +323,9 @@ export class WinPackager extends PlatformPackager<WinBuildOptions> {
 
   private getExecutableFilename(): String {
       const fileName = this.config
-          && this.config.squirrelWindows
-          && this.config.squirrelWindows.executableFilename ?
-              `${this.config.squirrelWindows.executableFilename}.exe` :
+          && this.config.win
+          && this.config.win.executableFilename ?
+              `${this.config.win.executableFilename}.exe` :
               `${this.appInfo.productFilename}.exe`
       return fileName;
   }
