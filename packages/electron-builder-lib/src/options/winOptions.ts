@@ -101,7 +101,12 @@ export interface WindowsConfiguration extends PlatformSpecificBuildOptions {
    * 2.15.0 path
    * 2.16.0 files
    */
-  readonly electronUpdaterCompatibility?: string | null
+  readonly electronUpdaterCompatibility?: string | null,
+
+  /**
+   * Desired executable filename
+   */
+  readonly executableFilename?: string | null
 }
 
 export type RequestedExecutionLevel = "asInvoker" | "highestAvailable" | "requireAdministrator"

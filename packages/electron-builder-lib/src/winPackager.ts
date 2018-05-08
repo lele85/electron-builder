@@ -344,7 +344,7 @@ export class WinPackager extends PlatformPackager<WindowsConfiguration> {
   }
 
   protected async signApp(packContext: AfterPackContext): Promise<any> {
-    const exeFileName = `${this.appInfo.productFilename}.exe`
+    const exeFileName = `${this.getAppExecutableFilename()}.exe`
     if (this.platformSpecificBuildOptions.signAndEditExecutable === false) {
       return
     }
@@ -372,6 +372,15 @@ export class WinPackager extends PlatformPackager<WindowsConfiguration> {
         return null
       }
     })
+  }
+
+  private getAppExecutableFilename(): String {
+      const fileName = this.config
+          && this.config.win
+          && this.config.win.executableFilename ?
+              `${this.config.win.executableFilename}` :
+              `${this.appInfo.productFilename}`
+      return fileName;
   }
 }
 
